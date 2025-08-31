@@ -18,3 +18,8 @@ spec:
         image: rjshsynectiks/forecaster:latest   # update with your image later
         ports:
         - containerPort: 5000
+        envFrom:                               # 👈 inject config + secret here
+        - configMapRef:
+            name: forecaster-config
+        - secretRef:
+            name: forecaster-secret

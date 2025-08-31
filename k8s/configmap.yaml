@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: forecaster-config
+  namespace: forecast
+data:
+  MODEL_WINDOW: "24"
+  LEARNING_RATE: "0.001"
+  API_URL: "http://sample-api:5000"
