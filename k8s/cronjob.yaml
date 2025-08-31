@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: forecaster-cron
+  namespace: forecast
+spec:
+  schedule: "0 */6 * * *"   # every 6 hours
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: forecaster
+            image: rjshsynectiks/forecaster:latest   # replace with your image later
+            imagePullPolicy: IfNotPresent
+            command: ["python", "train.py"]
+          restartPolicy: OnFailure
