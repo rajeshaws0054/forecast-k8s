@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forecaster-deployment
+  namespace: forecast
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forecaster
+  template:
+    metadata:
+      labels:
+        app: forecaster
+    spec:
+      containers:
+      - name: forecaster
+        image: rjshsynectiks/forecaster:latest   # update with your image later
+        ports:
+        - containerPort: 5000
